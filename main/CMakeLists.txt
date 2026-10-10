@@ -202,6 +202,22 @@ elseif(CONFIG_BOARD_TYPE_MAGICLICK_C3_V2)
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_16_4)
     set(BUILTIN_ICON_FONT font_material_symbols_16_4)
     set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_32)
+elseif(CONFIG_BOARD_TYPE_MAZA_AI_ESP32_S3)
+    set(BOARD_DIR "maza-ai/esp32-s3")
+    list(APPEND SOURCES
+        "display/epd_display/epd_display.cc"
+        "display/epd_display/epd_display_2_9.cc"
+    )
+    set(BUILTIN_TEXT_FONT font_noto_sans_basic_14_1)
+    set(BUILTIN_ICON_FONT font_material_symbols_14_1)
+elseif(CONFIG_BOARD_TYPE_MAZA_AI_ESP32_S31)
+    set(BOARD_DIR "maza-ai/esp32-s31")
+    list(APPEND SOURCES
+        "display/epd_display/epd_display.cc"
+        "display/epd_display/epd_display_2_9.cc"
+    )
+    set(BUILTIN_TEXT_FONT font_noto_sans_basic_14_1)
+    set(BUILTIN_ICON_FONT font_material_symbols_14_1)
 elseif(CONFIG_BOARD_TYPE_M5STACK_STOPWATCH)
     set(BOARD_DIR "m5stack/stopwatch")
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_30_4)
@@ -303,9 +319,9 @@ elseif(CONFIG_BOARD_TYPE_ESP_SENSAIRSHUTTLE)
     set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_32)
 elseif(CONFIG_BOARD_TYPE_WAVESHARE_ESP32_TOUCH_LCD_3_5)
     set(BOARD_DIR "waveshare/esp32-touch-lcd-3.5")
-    set(BUILTIN_TEXT_FONT font_noto_sans_basic_20_4)
-    set(BUILTIN_ICON_FONT font_material_symbols_20_4)
-    set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_64)
+    set(BUILTIN_TEXT_FONT font_noto_sans_basic_16_4)
+    set(BUILTIN_ICON_FONT font_material_symbols_16_4)
+    set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_32)
 elseif(CONFIG_BOARD_TYPE_WAVESHARE_ESP32_S3_CAM_XXXX)
     set(BOARD_DIR "waveshare/esp32-s3-cam")
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_16_4)
@@ -563,6 +579,11 @@ elseif(CONFIG_BOARD_TYPE_ESP32_S31_KORVO_1)
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_30_4)
     set(BUILTIN_ICON_FONT font_material_symbols_30_4)
     set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_64)
+elseif(CONFIG_BOARD_TYPE_ESP_MOSAICO)
+    set(BOARD_DIR "espressif/esp-mosaico")
+    set(BUILTIN_TEXT_FONT font_noto_sans_basic_30_4)
+    set(BUILTIN_ICON_FONT font_material_symbols_30_4)
+    set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_64)
 elseif(CONFIG_BOARD_TYPE_BREAD_COMPACT_WIFI_LCD)
     set(BOARD_DIR "bread-compact-wifi-lcd")
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_16_4)
@@ -570,6 +591,11 @@ elseif(CONFIG_BOARD_TYPE_BREAD_COMPACT_WIFI_LCD)
     set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_32)
 elseif(CONFIG_BOARD_TYPE_LILYGO_T_CIRCLE_S3)
     set(BOARD_DIR "lilygo/t-circle-s3")
+    set(BUILTIN_TEXT_FONT font_noto_sans_basic_16_4)
+    set(BUILTIN_ICON_FONT font_material_symbols_16_4)
+    set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_32)
+elseif(CONFIG_BOARD_TYPE_LILYGO_T_CIRCLE_S3_V11)
+    set(BOARD_DIR "lilygo/t-circle-s3-v11")
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_16_4)
     set(BUILTIN_ICON_FONT font_material_symbols_16_4)
     set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_32)
@@ -713,6 +739,13 @@ elseif(CONFIG_BOARD_TYPE_GENJUTECH_S3_1_54TFT)
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_20_4)
     set(BUILTIN_ICON_FONT font_material_symbols_20_4)
     set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_64)
+elseif(CONFIG_BOARD_TYPE_GUITION_JC4827W543)
+    set(BOARD_DIR "guition/jc4827w543")
+    # 16px, not the 20px most 480-wide boards use: the assets partition is 1MB
+    # and the 20px common font alone is 1228KB. See the board README.
+    set(BUILTIN_TEXT_FONT font_noto_sans_basic_16_4)
+    set(BUILTIN_ICON_FONT font_material_symbols_16_4)
+    set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_64)
 elseif(CONFIG_BOARD_TYPE_WDMOMO_CGC)
     set(BOARD_DIR "wdmomo/esp32-cgc")
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_14_1)
@@ -844,6 +877,11 @@ elseif(CONFIG_BOARD_TYPE_LCDWIKI_ES3C35P)
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_20_4)
     set(BUILTIN_ICON_FONT font_material_symbols_20_4)
     set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_128)
+elseif(CONFIG_BOARD_TYPE_LC_S3_WIFI_1_54TFT)
+    set(BOARD_DIR "lc-s3-wifi-1.54tft")
+    set(BUILTIN_TEXT_FONT font_noto_sans_basic_20_4)
+    set(BUILTIN_ICON_FONT font_material_symbols_20_4)
+    set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_64)
 endif()
 
 if(NOT BOARD_DIR AND NOT CMAKE_BUILD_EARLY_EXPANSION)
@@ -933,6 +971,8 @@ elseif(CONFIG_LANGUAGE_MR_IN)
     set(LANG_DIR "mr-IN")
 elseif(CONFIG_LANGUAGE_PT_PT)
     set(LANG_DIR "pt-PT")
+elseif(CONFIG_LANGUAGE_PT_BR)
+    set(LANG_DIR "pt-BR")
 elseif(CONFIG_LANGUAGE_PL_PL)
     set(LANG_DIR "pl-PL")
 elseif(CONFIG_LANGUAGE_CS_CZ)
@@ -1043,6 +1083,9 @@ if(CONFIG_IDF_TARGET_ESP32S3)
 endif()
 
 set(MAIN_PRIV_REQUIRES_EXTRA "")
+if(CONFIG_XIAOZHI_NETWORK_ETHERNET AND CONFIG_XIAOZHI_ETH_PHY_IP101)
+    list(APPEND MAIN_PRIV_REQUIRES_EXTRA espressif__ip101)
+endif()
 if(BOARD_TYPE STREQUAL "m5stack-stick-s3")
     list(APPEND MAIN_PRIV_REQUIRES_EXTRA
         m5stack__m5pm1
@@ -1095,6 +1138,12 @@ idf_component_register(SRCS ${SOURCES}
                         ${MAIN_PRIV_REQUIRES_EXTRA}
                     )
 
+# Keep project-owned C++ on GNU C++23. ESP-IDF 6 may default to a newer
+# dialect; pin the baseline so main/ does not depend on it.
+if(NOT CMAKE_BUILD_EARLY_EXPANSION)
+    target_compile_options(${COMPONENT_LIB} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++23>)
+endif()
+
 # Use target_compile_definitions to define the reported board identity
 # If BOARD_NAME is empty, use BOARD_TYPE
 if(NOT BOARD_NAME)
@@ -1118,6 +1167,23 @@ if(NOT CMAKE_BUILD_EARLY_EXPANSION)
                         PRIVATE BUILTIN_TEXT_FONT=${BUILTIN_TEXT_FONT} BUILTIN_ICON_FONT=${BUILTIN_ICON_FONT}
                         PRIVATE TEXT_FONT_SIZE=${TEXT_FONT_SIZE} TEXT_FONT_BPP=${TEXT_FONT_BPP}
                         )
+    # ESP32-S3 LVGL builtin pool: PSRAM boards allocate it from PSRAM.
+    # Boards that set CONFIG_SPIRAM=n must not keep the 1MB chip-default
+    # pool as a .dram0.bss array (build.py also switches those variants
+    # back to CLIB malloc).
+    if(CONFIG_IDF_TARGET_ESP32S3)
+        idf_component_get_property(lvgl_lib lvgl__lvgl COMPONENT_LIB)
+        if(lvgl_lib)
+            target_include_directories(${lvgl_lib} PRIVATE "${CMAKE_CURRENT_LIST_DIR}/display")
+            if(CONFIG_SPIRAM)
+                target_compile_definitions(${lvgl_lib} PRIVATE
+                    "LV_MEM_POOL_INCLUDE=\"lvgl_psram_pool.h\"")
+            elseif(CONFIG_LV_USE_BUILTIN_MALLOC)
+                target_compile_definitions(${lvgl_lib} PRIVATE
+                    "LV_MEM_POOL_INCLUDE=\"lvgl_no_psram_pool.h\"")
+            endif()
+        endif()
+    endif()
 endif()
 
 # Add generation rules
